@@ -40,4 +40,13 @@ func main() {
 	}
 
 	fmt.Print("\n")
+
+	if conf.ShowTotalFlag {
+		var total uint = 0
+		for i := 0; i < len(d); i++ {
+			total += d[i].Dice
+		}
+		fmt.Printf("total: %d\n", total)
+	}
+
 }

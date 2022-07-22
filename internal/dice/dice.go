@@ -8,7 +8,7 @@ import (
 )
 
 type Dice struct {
-	dice  uint
+	Dice  uint
 	faces uint
 }
 
@@ -16,7 +16,7 @@ func (d Dice) String() string {
 	str := ""
 	digits := len(strconv.Itoa(int(d.faces)))
 	format := "[%0" + strconv.Itoa(digits) + "d]"
-	str += fmt.Sprintf(format, d.dice)
+	str += fmt.Sprintf(format, d.Dice)
 	return str
 }
 
@@ -31,6 +31,6 @@ func (d *Dice) Roll() error {
 	if err != nil {
 		return err
 	}
-	d.dice = uint(nBig.Uint64()) + 1
+	d.Dice = uint(nBig.Uint64()) + 1
 	return nil
 }
