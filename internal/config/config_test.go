@@ -15,10 +15,7 @@ func OperationCheckGetConfig(t *testing.T) {
 		EffectFlag:   true,
 	}
 
-	conf, err := config.GetConfig(dummyCmdArgs)
-	if err != nil {
-		print(err)
-	}
+	conf := config.GetConfig(dummyCmdArgs)
 
 	if *conf != *expected {
 		t.Errorf("expected: %v actual: %v", expected, conf)
