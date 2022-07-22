@@ -6,12 +6,14 @@ import (
 	"github.com/H-Kiku482/cli_dice/internal/config"
 )
 
-func OperationCheckGetConfig(t *testing.T) {
+func TestFlag(t *testing.T) {
+	// for operation check
 	dummyCmdArgs := []string{
 		"-d", "3", "-e",
 	}
 	expected := &config.Options{
 		DiceQuantity: 3,
+		Face:         6,
 		EffectFlag:   true,
 	}
 
