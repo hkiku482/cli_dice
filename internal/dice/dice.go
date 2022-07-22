@@ -3,7 +3,6 @@ package dice
 import (
 	"crypto/rand"
 	"fmt"
-	"math"
 	"math/big"
 	"strconv"
 )
@@ -15,8 +14,8 @@ type Dice struct {
 
 func (d Dice) String() string {
 	str := ""
-	digits := strconv.Itoa(int(math.Floor(math.Log10(float64(d.faces)))))
-	format := "[%" + digits + "d]"
+	digits := len(strconv.Itoa(int(d.faces)))
+	format := "[%0" + strconv.Itoa(digits) + "d]"
 	str += fmt.Sprintf(format, d.dice)
 	return str
 }
@@ -28,11 +27,10 @@ func InitDice(faces uint) *Dice {
 }
 
 func (d *Dice) Roll() error {
-	// use secure random
-	nBig, err := rand.Int(rand.Reader, big.NewInt(int64(d.faces)))
+	nBig, err := rand.Int(rand.Reader, big.NewInt(int64(d.faces-1)))
 	if err != nil {
 		return err
 	}
-	d.dice = uint(nBig.Uint64())
+	d.dice = uint(nBig.Uint64()) + 1
 	return nil
 }
