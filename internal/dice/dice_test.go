@@ -8,7 +8,7 @@ import (
 )
 
 func TestDiceString(t *testing.T) {
-	dice := dice.GetDice(6)
+	dice := dice.InitDice(6)
 	expected := "[0]"
 	actual := fmt.Sprint(dice)
 	if expected != actual {
